@@ -1,0 +1,78 @@
+.sidebar{
+  height: 100%;
+  width:300px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #e7e7e7;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+
+.hover_effect:hover{
+    background: rgb(192, 188, 188);
+    border-radius: 5px;
+}
+
+.main_contents{
+    text-align: center;
+}
+
+
+.title_font{
+    font-family: 'Alfa Slab One', cursive;
+}
+
+
+.dropDown_bar{
+    border: none;
+    height:40px;
+    min-width: 200px;
+    padding: 0px 10px 0px 45px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    
+}
+
+.nav_board{
+    width:1000px;
+    height:600px;
+    /* background: #ec5239; */
+    padding-top: 100px;
+    margin-top: 70px;
+    border: 8px solid #ec5239;
+    border-radius:5px;
+}
+
+
+.navBoard_button{
+    background: rgb(239, 234, 234);
+    padding: 20px;
+    width: 70%;
+    margin-left: 10px;
+    border-radius:20px;
+}
+
+.navBoard_button:hover{
+    background: rgb(219, 203, 203);
+}
+
+
+.title_heading{
+    font-family: 'Oswald', sans-serif;
+    font-weight: bolder;
+    font-size: 65px;
+    
+}
+
+.hFont{
+    font-family: 'Righteous', cursive;
+}
+
+
+.upper-link{
+    font-size: 15px;
+}
