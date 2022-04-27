@@ -11,6 +11,7 @@ $con = new mysqli('localhost', 'root', '', 'mis');
 
 
 
+
 $query = $con->query("
 SELECT
        CASE WHEN Enrolled BETWEEN 1 AND 10 THEN '1-10'
@@ -23,19 +24,19 @@ SELECT
        WHEN Enrolled BETWEEN 56 AND 60 THEN '56-60'
        WHEN Enrolled > 60 THEN '60+' 
        END AS Enrollment,
-       COUNT(CASE WHEN department_t.School_Title='SBE' THEN 'SBE' END) AS SBE,
-       COUNT(CASE WHEN department_t.School_Title='SELS' THEN 'SELS' END) AS SELS,
-       COUNT(CASE WHEN department_t.School_Title='SETS' THEN 'SETS' END) AS SETS,
-       COUNT(CASE WHEN department_t.School_Title='SLASS' THEN 'SLASS' END) AS SLASS,
-       COUNT(CASE WHEN department_t.School_Title='SPPH' THEN 'SPPH' END) AS SPPH,
-       COUNT(section_t.Course_ID) AS TOTAL
-       FROM section_t, department_t
-       WHERE Session = '$semester' 
+       COUNT(CASE WHEN SE.Department_ID ='CSE' THEN 'CSE' END) AS CSE,
+       COUNT(CASE WHEN SE.Department_ID='CSC' THEN 'CSC' END) AS CSC,
+       COUNT(CASE WHEN SE.Department_ID='EEE' THEN 'EEE' END) AS EEE,
+       COUNT(CASE WHEN SE.Department_ID='CEN' THEN 'CEN' END) AS CEN,
+       COUNT(CASE WHEN SE.Department_ID='MAT' THEN 'MAT' END) AS MAT,
+       COUNT(C.School_Title='SETS' ) AS TOTAL
+       FROM section_t AS SE , course_t AS C
+       WHERE Session ='$semester'
        AND YEAR = '$year' 
-       AND section_t.Department_ID=department_t.Department_ID
+       AND C.Course_ID= SE.Course_ID
        GROUP BY Enrollment
        HAVING Enrollment IS NOT NULL;
-  ");
+");
 
 
 
@@ -104,7 +105,7 @@ SELECT
         <div class="main_contents">
             <div class="row mt-5 ps-5">
                 <div class="d-flex flex-column align-items-center justify-content-center">
-                    <h4 class="text-danger hFont fw-bolder lh-lg pt-5 pb-3 text-uppercase">class size distributions <?php echo $semester2 . " " . $year ?></h4>
+                    <h4 class="text-danger hFont fw-bolder lh-lg pt-5 pb-3 text-uppercase">class size distributions on SETS<?php echo $semester2 . " " . $year ?></h4>
                     <table class="table table table-danger">
                         <thead>
                             <tr>
@@ -170,11 +171,11 @@ SELECT
 
         foreach ($query as $data) {
             $Enrollment[] = $data['Enrollment'];
-            $SBE[] = $data['SBE'];
-            $SELS[] = $data['SELS'];
-            $SETS[] = $data['SETS'];
-            $SLASS[] = $data['SLASS'];
-            $SPPH[] = $data['SPPH'];
+            $CSE[] = $data['CSE'];
+            $CSC[] = $data['CSC'];
+            $EEE[] = $data['EEE'];
+            $CEN[] = $data['CEN'];
+            $MAT[] = $data['MAT'];
             $TOTAL[] = $data['TOTAL'];
         }
 
@@ -187,33 +188,33 @@ SELECT
     const data = {
       labels: <?php echo json_encode($Enrollment) ?>,
       datasets: [{
-        label: 'SBE',
-        data: <?php echo json_encode($SBE) ?>,
+        label: 'CSE',
+        data: <?php echo json_encode($CSE) ?>,
         backgroundColor: '#CB4335',    
         borderWidth: 1
       },
       {
-        label: 'SELS',
-        data: <?php echo json_encode($SELS) ?>,
+        label: 'CSC',
+        data: <?php echo json_encode($CSC) ?>,
         backgroundColor: '#1F618D',
         borderWidth: 1
       },
       {
-        label: 'SETS',
-        data: <?php echo json_encode($SETS) ?>,
+        label: 'EEE',
+        data: <?php echo json_encode($EEE) ?>,
         backgroundColor:'#D35400',
         borderWidth: 1
       },
       {
-        label: 'SLASS',
-        data: <?php echo json_encode($SLASS) ?>,
+        label: 'CEN',
+        data: <?php echo json_encode($CEN) ?>,
         backgroundColor: '#27AE60', 
        
         borderWidth: 1
       },
       {
-        label: 'SPPH',
-        data: <?php echo json_encode($SPPH) ?>,
+        label: 'MAT',
+        data: <?php echo json_encode($MAT) ?>,
         backgroundColor:'#884EA0',
         
         borderWidth: 1
