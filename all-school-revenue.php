@@ -149,6 +149,49 @@ ORDER BY Session;
                     </div>
                 </div>
             </div>
+           <div class="row mt-5 ps-5">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="w-75">
+                        <canvas id="myChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5 ps-5">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="w-75">
+                        <canvas id="myChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5 ps-5">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="w-75">
+                        <canvas id="myChart4"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5 ps-5">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="w-75">
+                        <canvas id="myChart5"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5 ps-5">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="w-75">
+                        <canvas id="myChart6"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5 ps-5">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="w-75">
+                        <canvas id="myChart7"></canvas>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -278,7 +321,7 @@ ORDER BY Session;
 
         // config 
         const config2 = {
-            type: 'line',
+            type: 'bar',
             data: data2,
             options: {}
         };
@@ -286,6 +329,130 @@ ORDER BY Session;
             document.getElementById('myChart2'),
             config2
         );
+
+        // setup 1
+        const data3 = {
+            labels: <?php echo json_encode($Session) ?>,
+            datasets: [{
+                    label: 'SBE',
+                    data: <?php echo json_encode($SBE) ?>,
+                    backgroundColor: '#CB4335',
+                    borderColor: '#CB4335',
+                    fill: true
+                }
+               
+            ]
+        };
+
+        // config 
+        const config3 = {
+            type: 'bar',
+            data: data3,
+            options: {}
+        };
+        const myChart3 = new Chart(
+            document.getElementById('myChart3'),
+            config3
+        );
+        // setup 1
+        const data4 = {
+            labels: <?php echo json_encode($Session) ?>,
+            datasets: [{
+                    label: 'SELS',
+                    data: <?php echo json_encode($SELS) ?>,
+                    backgroundColor: '#1F618D',
+                    borderColor: '#1F618D',
+                    fill: true
+                }
+               
+            ]
+        };
+
+        // config 
+        const config4 = {
+            type: 'bar',
+            data: data4,
+            options: {}
+        };
+        const myChart4 = new Chart(
+            document.getElementById('myChart4'),
+            config4
+        );
+        // setup 1
+        const data5 = {
+            labels: <?php echo json_encode($Session) ?>,
+            datasets: [{
+                    label: 'SETS',
+                    data: <?php echo json_encode($SETS) ?>,
+                    backgroundColor: '#D35400',
+                    borderColor: '#D35400',
+                    fill: true
+                }
+               
+            ]
+        };
+
+        // config 
+        const config5 = {
+            type: 'bar',
+            data: data5,
+            options: {}
+        };
+        const myChart5 = new Chart(
+            document.getElementById('myChart5'),
+            config5
+        );
+        // setup 1
+        const data6 = {
+            labels: <?php echo json_encode($Session) ?>,
+            datasets: [{
+                    label: 'SLASS',
+                    data: <?php echo json_encode($SLASS) ?>,
+                    backgroundColor: '#27AE60',
+                    borderColor: '#27AE60',
+                    fill: true
+                }
+               
+            ]
+        };
+
+        // config 
+        const config6 = {
+            type: 'bar',
+            data: data6,
+            options: {}
+        };
+        const myChart6 = new Chart(
+            document.getElementById('myChart6'),
+            config6
+        );
+        // setup 1
+        const data7 = {
+            labels: <?php echo json_encode($Session) ?>,
+            datasets: [{
+                    label: 'SPPH',
+                    data: <?php echo json_encode($SPPH) ?>,
+                    backgroundColor: '#884EA0',
+                    borderColor: '#884EA0',
+                    fillColor: '#884EA0',
+                    fill: true
+                }
+               
+            ]
+        };
+
+        // config 
+        const config7 = {
+            type: 'bar',
+            data: data7,
+            options: {}
+        };
+        const myChart7 = new Chart(
+            document.getElementById('myChart7'),
+            config7
+        );
+
+
     </script>
 </body>
 
